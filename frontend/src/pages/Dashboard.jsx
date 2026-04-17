@@ -143,8 +143,8 @@ const Dashboard = () => {
                 />
             )}
         </div>
-        <button className="fab" onClick={() => handleOpenForm()} title="Add Task">
-            <Plus size={28} />
+        <button className="fab" onClick={() => handleOpenForm()} title="Add Task" style={{ position: 'fixed', zIndex: 9999 }}>
+            <Plus size={32} />
         </button>
         </>
     );
