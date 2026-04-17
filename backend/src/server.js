@@ -25,37 +25,26 @@ app.get('/api', (req, res) => {
 app.use(require('./middleware/errorHandler'));
 
 // Database and Server Initialization
-const startServer = async () => {
-    try {
-        const mongoUri = process.env.MONGO_URI;
-        if (!mongoUri) {
-            console.error('FATAL: MONGO_URI is missing from your .env file!');
-            console.error('Please add MONGO_URI to /backend/.env using your MongoDB Atlas cluster connection string.');
-            process.exit(1);
-        }
+const mongoUri = process.env.MONGO_URI;
+if (mongoUri) {
+    mongoose.connect(mongoUri).then(() => {
+        console.log('Connected successfully to database cluster!');
+    }).catch(err => console.error('Database connection error:', err));
+}
 
-        // Connect Mongoose to Real DB
-        await mongoose.connect(mongoUri);
-        console.log(`Connected successfully to database cluster!`);
+// Only explicitly bind the port if we are NOT operating in a Serverless environment like Vercel
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
 
-        // Start listening
-        app.listen(PORT, () => {
-            console.log(`Server is running on http://localhost:${PORT}`);
-        });
-    } catch (err) {
-        console.error('Failed to start server:', err);
-        process.exit(1);
-    }
-};
-
-startServer();
-
-// Export the Express App for Serverless Platform Compatibility (e.g. Vercel)
+// Export the Express App for Serverless Platform Compatibility
 module.exports = app;
 
-// Handle graceful shutdown
+// Handle graceful shutdown natively
 process.on('SIGINT', async () => {
     await mongoose.disconnect();
-    console.log('\nMongoDB default connection disconnected through app termination.');
+    console.log('\nMongoDB connection gracefully disconnected.');
     process.exit(0);
 });
