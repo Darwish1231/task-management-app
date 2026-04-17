@@ -110,7 +110,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 2500;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,6 +360,7 @@ body {
   max-width: 500px;
   padding: 2.5rem;
   border-radius: 20px;
+  margin-top: 2rem; /* Ensure it doesn't hug the top on desktop */
 }
 
 @media (max-width: 768px) {
