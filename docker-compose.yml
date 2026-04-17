@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: task-backend
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      # Note: Production deployments MUST use standard secrets / vault
+      - JWT_SECRET=supersecret123456789
+      - MONGO_URI=${MONGO_URI:-mongodb://localhost:27017/taskapp}
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: task-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
