@@ -14,18 +14,18 @@ const Navbar = () => {
 
     return (
         <nav className="navbar glass-panel-static">
-            <div style={{ padding: '0 1.5rem', display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="navbar-content">
                 <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
                     <Layers size={28} color="#3b82f6" />
-                    TaskHub
+                    <span>TaskHub</span>
                 </Link>
                 
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div className="navbar-actions">
                     {user ? (
                         <>
-                            <span style={{ color: 'var(--text-secondary)' }}>Hello, <strong>{user.username}</strong></span>
-                            <button onClick={handleLogout} className="btn btn-primary" style={{ background: 'transparent', border: '1px solid var(--card-border)', padding: '0.4rem 1rem' }}>
-                                <LogOut size={16} /> Logout
+                            <span>Hello, <strong>{user.username}</strong></span>
+                            <button onClick={handleLogout} className="btn btn-primary" style={{ background: 'transparent', border: '1px solid var(--card-border)', padding: '0.4rem 0.8rem' }}>
+                                <LogOut size={18} /> <span className="btn-text">Logout</span>
                             </button>
                         </>
                     ) : (

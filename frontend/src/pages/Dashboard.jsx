@@ -88,7 +88,7 @@ const Dashboard = () => {
                     <p style={{ color: 'var(--text-secondary)', marginTop: '0.25rem' }}>Organize your work efficiently</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', gap: '0.25rem', background: 'rgba(0,0,0,0.2)', padding: '0.25rem', borderRadius: '8px' }}>
+                    <div className="scroll-tabs" style={{ background: 'rgba(0,0,0,0.2)', padding: '0.25rem', borderRadius: '8px' }}>
                         {['all', 'todo', 'doing', 'done'].map(status => (
                             <button 
                                 key={status}
@@ -97,6 +97,7 @@ const Dashboard = () => {
                                 style={{ 
                                     padding: '0.4rem 0.8rem', 
                                     fontSize: '0.8rem',
+                                    whiteSpace: 'nowrap',
                                     textTransform: 'capitalize',
                                     background: filterStatus === status ? 'var(--card-border)' : 'transparent',
                                     color: filterStatus === status ? 'white' : 'var(--text-secondary)'
@@ -106,7 +107,7 @@ const Dashboard = () => {
                             </button>
                         ))}
                     </div>
-                    <button className="btn btn-primary" onClick={() => handleOpenForm()}>
+                    <button className="btn btn-primary fab-desktop-btn" onClick={() => handleOpenForm()}>
                         <Plus size={18} /> Add Task
                     </button>
                 </div>
@@ -140,6 +141,10 @@ const Dashboard = () => {
                     onSubmit={handleSubmitTask} 
                 />
             )}
+
+            <button className="fab" onClick={() => handleOpenForm()} title="Add Task">
+                <Plus size={28} />
+            </button>
         </div>
     );
 };
