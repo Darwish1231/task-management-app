@@ -364,23 +364,23 @@ body {
 
 @media (max-width: 768px) {
   .modal-content {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 20px; /* Keep consistent rounded corners */
     position: absolute;
-    bottom: 0;
-    max-width: 100%;
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    padding: 2rem 1.5rem 3rem;
+    top: 80px; /* Positioned just below the navbar */
+    bottom: auto;
+    max-width: 95%; /* Narrower on mobile for better looks */
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 2rem 1.5rem;
   }
 
   .mobile-handle {
-    display: block !important;
+    display: none !important; /* Hide handle for top-positioned modal */
   }
 }
 
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 
