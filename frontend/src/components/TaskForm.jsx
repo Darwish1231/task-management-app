@@ -32,7 +32,7 @@ const TaskForm = ({ onClose, onSubmit, initialData }) => {
 
     return (
         <div className="task-form-overlay animate-fade-in">
-            <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem' }}>
+            <div className="glass-panel modal-content">
                 <h2 style={{ marginBottom: '1.5rem' }}>{initialData ? 'Edit Task' : 'New Task'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
