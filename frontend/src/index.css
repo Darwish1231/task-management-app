@@ -501,8 +501,18 @@ body {
     padding: 0 0.5rem;
   }
   
-  .navbar-actions span {
-    display: none; /* Hide "Hello, username" but we'll show Logout text */
+  .navbar-actions .user-greeting {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hello-text {
+    display: none;
   }
 
   .logo span {

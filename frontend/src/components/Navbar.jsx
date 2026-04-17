@@ -23,7 +23,7 @@ const Navbar = () => {
                 <div className="navbar-actions">
                     {user ? (
                         <>
-                            <span>Hello, <strong>{user.username}</strong></span>
+                            <span className="user-greeting"><span className="hello-text">Hello, </span><strong>{user.username}</strong></span>
                             <button onClick={handleLogout} className="btn btn-primary" style={{ background: 'transparent', border: '1px solid var(--card-border)', padding: '0.4rem 0.8rem' }}>
                                 <LogOut size={18} /> <span className="btn-text">Logout</span>
                             </button>
