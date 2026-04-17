@@ -50,6 +50,9 @@ const startServer = async () => {
 
 startServer();
 
+// Export the Express App for Serverless Platform Compatibility (e.g. Vercel)
+module.exports = app;
+
 // Handle graceful shutdown
 process.on('SIGINT', async () => {
     await mongoose.disconnect();
