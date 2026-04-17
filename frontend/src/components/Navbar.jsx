@@ -30,8 +30,8 @@ const Navbar = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/login" className="btn" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>Login</Link>
-                            <Link to="/register" className="btn btn-primary" style={{ textDecoration: 'none' }}>Register</Link>
+                            <Link to="/login" className="btn navbar-btn">Login</Link>
+                            <Link to="/register" className="btn btn-primary navbar-btn">Register</Link>
                         </>
                     )}
                 </div>

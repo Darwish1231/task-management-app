@@ -12,6 +12,7 @@
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
+  --accent-transparent: rgba(59, 130, 246, 0.2);
 }
 
 * {
@@ -455,7 +456,7 @@ body {
   }
   
   .navbar-actions .btn-text {
-    display: none; /* Hide "Logout" text on mobile, keep icon */
+    display: inline; /* Show "Logout" text on mobile */
   }
 }
 
@@ -465,11 +466,17 @@ body {
   }
   
   .navbar-actions span {
-    display: none; /* Hide "Hello, username" on very small screens */
+    display: none; /* Hide "Hello, username" but we'll show Logout text */
   }
 
   .logo span {
-    display: none; /* Hide "TaskHub" text if needed, or just keep it small */
+    display: block; /* Show "TaskHub" text */
+    font-size: 1.1rem;
+  }
+  
+  .navbar-actions .btn-text {
+    display: inline; /* Ensure Logout text is visible */
+    font-size: 0.85rem;
   }
   
   .task-header {
@@ -479,5 +486,15 @@ body {
   
   .task-actions {
     gap: 0.25rem;
+  }
+
+  .navbar-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  
+  .navbar-actions {
+    gap: 0.5rem;
   }
 }

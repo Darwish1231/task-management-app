@@ -81,6 +81,7 @@ const Dashboard = () => {
     };
 
     return (
+        <>
         <div className="animate-fade-in">
             <div className="dashboard-header">
                 <div>
@@ -141,11 +142,11 @@ const Dashboard = () => {
                     onSubmit={handleSubmitTask} 
                 />
             )}
-
-            <button className="fab" onClick={() => handleOpenForm()} title="Add Task">
-                <Plus size={28} />
-            </button>
         </div>
+        <button className="fab" onClick={() => handleOpenForm()} title="Add Task">
+            <Plus size={28} />
+        </button>
+        </>
     );
 };
 
