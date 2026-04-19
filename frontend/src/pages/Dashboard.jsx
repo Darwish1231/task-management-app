@@ -9,17 +9,20 @@ const Dashboard = () => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [editingTask, setEditingTask] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [filterStatus, setFilterStatus] = useState('all');
 
     const fetchTasks = async () => {
         try {
             setLoading(true);
+            setError(null);
             const url = filterStatus === 'all' ? '/tasks' : `/tasks?status=${filterStatus}`;
             const res = await api.get(url);
             setTasks(res.data);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching tasks', error);
+            setError('Failed to fetch tasks. Please try again later.');
             setLoading(false);
         }
     };
@@ -113,6 +116,12 @@ const Dashboard = () => {
                     </button>
                 </div>
             </div>
+
+            {error && (
+                <div style={{ background: 'rgba(255, 100, 100, 0.1)', border: '1px solid rgba(255, 100, 100, 0.2)', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', color: '#ff8888', textAlign: 'center' }}>
+                    {error}
+                </div>
+            )}
 
             {loading ? (
                 <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>Loading tasks...</div>
