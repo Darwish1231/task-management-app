@@ -18,7 +18,7 @@ app.use('/api/tasks', taskRoutes);
 
 // Main Route
 app.get('/api', (req, res) => {
-    res.json({ message: 'Task Management System API is running' });
+    res.json({ message: 'TaskHub API is running' });
 });
 
 // Centralized Error Handling Middleware
