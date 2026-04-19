@@ -15,7 +15,12 @@ const Login = () => {
             await login(formData.username, formData.password);
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.msg || 'Login failed');
+            const errorData = err.response?.data;
+            if (errorData?.errors) {
+                setError(errorData.errors.map(e => e.msg).join(', '));
+            } else {
+                setError(errorData?.msg || 'Login failed. Please check your credentials.');
+            }
         }
     };
 

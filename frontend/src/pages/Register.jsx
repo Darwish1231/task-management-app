@@ -15,7 +15,12 @@ const Register = () => {
             await register(formData.username, formData.password);
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.msg || 'Registration failed');
+            const errorData = err.response?.data;
+            if (errorData?.errors) {
+                setError(errorData.errors.map(e => e.msg).join(', '));
+            } else {
+                setError(errorData?.msg || 'Registration failed. Please try again.');
+            }
         }
     };
 
