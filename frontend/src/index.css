@@ -345,10 +345,11 @@ body {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(8px) !important;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 2000;
-  padding: 1rem;
+  padding: 5rem 1rem 2rem;
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -360,7 +361,6 @@ body {
   max-width: 500px;
   padding: 2.5rem;
   border-radius: 20px;
-  margin-top: 2rem; /* Ensure it doesn't hug the top on desktop */
 }
 
 @media (max-width: 768px) {
